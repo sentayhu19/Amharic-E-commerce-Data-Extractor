@@ -2,4 +2,5 @@ telethon
 --only-binary=:all: pandas>=2.2.0
 python-dotenv
 regex>=2023.12.25
-
+conllu>=4.5.2
+regex
