@@ -15,6 +15,31 @@ This project ingests raw messages from Ethiopian Telegram e-commerce channels, c
 └── .env.example        # Fill with your Telegram API creds
 ```
 
+## Environment setup
+1. Clone the repo and create a virtual environment (recommended)
+   ```bash
+   git clone https://github.com/sentayhu19/Amharic-E-commerce-Data-Extractor.git
+   cd Amharic-E-commerce-Data-Extractor
+   python -m venv .venv
+   source .venv/bin/activate   # Windows: .venv\Scripts\activate
+   ```
+2. Install runtime requirements
+   ```bash
+   pip install -r requirements.txt
+   ```
+   Extra tooling used in notebooks can be installed at any time:
+   ```bash
+   pip install regex conllu jupyter
+   ```
+3. Obtain Telegram API credentials
+   • Go to <https://my.telegram.org/apps> and create an application.  
+   • Copy `api_id` and `api_hash`.
+4. Configure credentials
+   ```bash
+   cp .env.example .env
+   # then edit .env and fill TELEGRAM_API_ID, TELEGRAM_API_HASH, (optional) PHONE_NUMBER
+   ```
+
 ## Quick start
 1. Install deps
 ```bash
@@ -59,3 +84,18 @@ Open `notebooks/labeling_demo.ipynb`. The first cell automatically:
 | B-LOC      | `ቦሌ`, `Bole`, `Megenagna` |
 
 Future work: add PRODUCT, MATERIAL, DELIVERY_FEE and CONTACT_INFO entity detectors.
+
+---
+
+## Commit conventions
+We follow the Conventional Commits style to make the history readable and automate release notes:
+```
+<type>(optional scope): <short summary>
+
+[optional body explaining *why* and any context]
+```
+Common `<type>` values: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`.  Example:
+```
+feat(labeling): add DELIVERY_FEE entity detector
+```
+Please write imperative, present-tense summaries no longer than 72 chars.
